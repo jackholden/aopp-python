@@ -1,0 +1,240 @@
+/* Jack's base structure to enable sticky footer functionality */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex !important;
+  flex-direction: column !important;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+/* to create the blue background header */
+main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  pointer-events: none;
+  height: 430px;
+  background-color: #0e1237;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.footer.fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding-left: 15px;
+  padding-bottom: 1.5rem;
+}
+
+.footer p {
+  color: #8492a6;
+}
+
+.footer a {
+  font-weight: 600;
+}
+
+.f-12 {
+  font-size: 12px;
+}
+
+.f-14 {
+  font-size: 14px;
+}
+
+.f-16 {
+  font-size: 16px;
+}
+
+.mb-100 {
+  margin-bottom: 100px;
+}
+
+.btn-circle {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.btn-circle i {
+  position: relative;
+  top: 0px;
+}
+
+.btn-circle-sm {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 0.9rem;
+}
+
+.btn-circle-lg {
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  font-size: 1.1rem;
+}
+
+.btn-circle-xl {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 1.3rem;
+}
+
+/* Jack's Modal CSS to override standard Bootstrap to enable sidebar functionality */
+.modal.fade.fixed-right {
+  transition: opacity .2s linear;
+}
+
+.modal-vertical {
+  height: calc(100% - 0px);
+  max-width: 350px;
+  margin: 0px 0;
+}
+
+.modal-vertical.modal-lg {
+  max-width: 450px;
+}
+
+.modal-vertical .modal-content {
+  height: inherit;
+  border-width: 0;
+  border-radius: 0 0 0 0;
+}
+
+.modal-vertical .modal-body {
+  height: inherit;
+  overflow-y: auto;
+}
+
+.modal.fade .modal-dialog-vertical {
+  transform: translateX(-100%);
+}
+
+.modal.show .modal-dialog-vertical {
+  transform: translateX(0);
+}
+
+.modal.fixed-right {
+  padding-right: 0 !important;
+}
+
+.modal.fixed-right .modal-vertical {
+  margin-left: auto;
+}
+
+.modal.fixed-right.fade .modal-vertical {
+  transform: translateX(100%);
+}
+
+.modal.fixed-right.show .modal-vertical {
+  transform: translateX(0);
+}
+
+.modal-backdrop.show {
+  opacity: .3;
+}
+
+.modal-dialog-slideout {
+  min-height: 100%;
+  margin: 0 0 0 auto;
+  background: #fff;
+}
+
+.modal.fade .modal-dialog.modal-dialog-slideout {
+  -webkit-transform: translate(100%,0)scale(1);
+  transform: translate(100%,0)scale(1);
+}
+
+.modal.fade.show .modal-dialog.modal-dialog-slideout {
+  -webkit-transform: translate(0,0);
+  transform: translate(0,0);
+  display: flex;
+  align-items: stretch;
+  -webkit-box-align: stretch;
+  height: 100%;
+  transition: transform .3s ease-out;
+}
+
+.modal.fade.show .modal-dialog.modal-dialog-slideout .modal-body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.modal-dialog-slideout .modal-content {
+  border: 0;
+}
+
+.modal-dialog-slideout .modal-header, .modal-dialog-slideout .modal-footer {
+  height: 69px;
+  display: block;
+}
+
+.modal-dialog-slideout .modal-header h5 {
+  float: left;
+}
+
+/* Jack's Customisation Starts Here */
+
+.jack-nav {
+  font-weight: 600;
+  font-family: 'Nunito Sans', sans-serif;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.jack-new-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
+}
+
+.jack-search .form-group {
+  margin-bottom: 0px;
+}
+
+.jack-search .form-control {
+  display: block;
+  height: 68px;
+  font-size: 1.25rem;
+  color: #c0ccda;
+  background-color: transparent;
+  background-image: none;
+}
+
+.jack-search-modal {
+  margin-top: 10px;
+}
+
+.jack-search .input-group-text {
+  font-size: 1.25rem;
+  background: transparent;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.btn-shadow {
+  box-shadow: 0 0 1.25rem rgba(31,45,61,.08)!important;
+}
+
+@media (max-width: 768px) {
+  .display-2.text-white.font-weight-bold {
+    font-size: 40px;
+  }
+}
+

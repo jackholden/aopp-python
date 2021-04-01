@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>BU Project</title>
+    <meta name="description" content="I'm a description...">
+    <meta name="author" content="Jack Holden">
+    <link rel="shortcut icon" sizes="16x16" href="/static/favicon.ico">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/static/css/start/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+
+    <!-- External Resources -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+</head>
+<body>
+    <main>
+        <header>
+            <nav class="navbar navbar-dark navbar-expand jack-nav">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Jack's Single App Page</a>
+                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navcol-1">
+                        <ul class="nav navbar-nav"></ul>
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" href="#" title="Search" data-target="#jack-search" data-toggle="modal">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main App -->
+        <section class="mb-100 mt-3" data-aos="fade-up" data-aos-delay="250">
+            <div class="container text-center">
+                <h1 class="display-2 text-white font-weight-bold">Welcome to ya dashboard.</h1>
+                <h2 class="text-white">Hi Susan, welcome back!</h2>
+            </div>
+        </section>
+        <section data-aos="fade-up" data-aos-delay="500">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 order-2 order-md-1">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">About</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">A web app built and designed using the Bootstrap 4 framework and jQuery library by Jack for
+                                    the frontend. Features a back-end that supports front-end and populates the data.</p>
+                            </div>
+                        </div>
+                        <div class="pt-3">
+                            <!-- Dynamic Pagination -->
+                            <nav>
+                                <ul class="pagination">
+                                    <li class="page-item"><a id="prevBtn" class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">« Prev</span></a></li>
+                                    <li class="page-item"><a id="nextBtn" class="page-link" href="#" aria-label="Next"><span aria-hidden="true">Next »</span></a></li>
+                                </ul>
+                                Total Pages: <div id="totalPages"></div>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col order-1 order-md-2">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Users</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- Dynamic Table loading data based on API -->
+                                <div class="table-responsive table-borderless">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>User ID</th>
+                                                <th>Email</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Avatar</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="dynamicUserJSON">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Add new user button which launches a modal -->
+        <button class="btn btn-primary btn-circle btn-circle-lg jack-btn jack-new-btn btn-shadow" data-toggle="modal" data-bs-tooltip="" type="button" title="New User" data-target="#jack-new">
+            <i class="fas fa-plus"></i>
+        </button>
+
+        <div class="d-none d-md-block footer fixed">
+            <p class="text-sm mb-0">© 2020 <a href="https://www.bournemouth.ac.uk" target="_blank">Jack Holden</a>. All rights reserved.</p>
+        </div>
+    </main>
+
+    <footer class="footer pt-5 pb-4">
+        <div class="container-fluid">
+            <div class="row text-center text-sm-left justify-content-center align-items-sm-center">
+                <div class="col-sm-3">
+                    <p class="text-center text-sm mb-0"><a id="toTop" class="text-primary">Back to top ↑</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- This will be the dynamic modal area -->
+    <div class="modal fade fixed-right" role="dialog" tabindex="-1" id="jack-new">
+        <div class="modal-dialog modal-vertical" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h4 class="modal-title">New User</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Fill in the fields below to create a new user.</p>
+                    <form id="newUserForm" class="ui form mb-5">
+                        <label>First Name</label>
+                        <input id="inputNewFirstName" type="text" name="first_name" placeholder="First Name" class="form-control"/>
+                        <label>Last Name</label>
+                        <input id="inputNewLastName" type="text" name="last_name" placeholder="Last Name" class="form-control"/>
+                        <label>Email</label>
+                        <input id="inputNewEmail" type="email" class="form-control" name="email" placeholder="Email"/>
+                        <label>Avatar</label>
+                        <input id="inputNewAvatar" type="url" class="form-control" name="avatar" placeholder="Avatar"/>
+                        <button type="submit" class="btn btn-primary">New User</button>
+                        <div id="res"></div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-light" type="button" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade fixed-right" role="dialog" tabindex="-1" id="jack-edit">
+        <div class="modal-dialog modal-vertical" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h4 class="modal-title">Edit User</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Edit the user below</p>
+                    <form id="editUserForm">
+                        <div class="form-group">
+                            <img id="userAvatar" src="" alt="User Avatar">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputUserID">User ID</label>
+                            <input id="inputUserID" class="form-control" type="text" disabled="">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail">Email</label>
+                            <input id="inputEmail" class="form-control" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFName">First Name</label>
+                            <input id="inputFName" class="form-control" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputLName">Last Name</label>
+                            <input id="inputLName" class="form-control" type="text">
+                        </div>
+                                                <input id="testid" class="form-control" type="hidden" value="testst">
+                        <button class="btn btn-primary" type="submit">Update</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-light" type="button" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="jack-search">
+        <div class="modal-dialog modal-xl jack-search-modal" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <form class="jack-search">
+                        <div class="form-group">
+                            <div class="input-group input-group-lg">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </div>
+                                <input id="searchInput" class="form-control" type="text" placeholder="Type and hit enter...">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/static/js/start/jquery.min.js"></script>
+    <script src="/static/js/start/bootstrap.min.js"></script>
+    <script src="/static/js/base.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+
+    <script>
+        /*$('.openBtn').on('click',function() {
+            var id = $(this).attr('n-id');
+            console.log("we made it this far");
+            //$('.modal-body').load('/api/edit/'+id,function(){
+            $('.modal-body').load(getUser(id), function(){
+                console.log("it should've loaded");
+                $('#myModal').modal({show:true});
+            });
+        });*/
+    </script>
+</body>
+</html>
